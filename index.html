@@ -42,8 +42,11 @@
                 <h1 class="animate-on-scroll">We Don't Just Advertise. <br> We Engineer Influence.</h1>
                 <p class="animate-on-scroll">Scroll to discover how.</p>
             </div>
+            <!-- UPDATED: Wrapped icon in an anchor tag -->
             <div class="scroll-indicator animate-on-scroll">
-                <i class="fa-solid fa-arrow-down"></i>
+                <a href="#about" aria-label="Scroll to about section">
+                    <i class="fa-solid fa-arrow-down"></i>
+                </a>
             </div>
         </section>
 
@@ -112,6 +115,40 @@
         </section>
 
     </main>
+    
+    <!-- NEW: Floating Contact Boy -->
+    <div id="contact-boy-container" class="floating-boy-contact">
+        <img src="assets/images/successo_boy_mobile.png" alt="Contact Us">
+    </div>
+
+    <!-- NEW: Contact Modal -->
+    <div id="contact-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <button id="modal-close-button" class="modal-close" aria-label="Close modal">&times;</button>
+            <h2>Get In Touch</h2>
+            <p>Ready to amplify your brand? Reach out to us!</p>
+            <div class="modal-contact-details">
+                <div class="modal-contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:contact.successomedia@gmail.com">contact.successomedia@gmail.com</a>
+                </div>
+                <div class="modal-contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+91 81389 23845</span>
+                </div>
+                <div class="modal-contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+91 79074 78932</span>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/successomedia" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/successomedia" target="_blank" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.facebook.com/share/1ArmQxRJoC/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Your Custom JavaScript -->
     <script src="assets/js/script.js"></script>
