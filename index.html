@@ -25,7 +25,7 @@
     <!-- Header with Logo -->
     <header class="site-header">
         <div class="logo">
-            <!-- IMPORTANT: Replace this placeholder with your actual logo file in assets/images/logo.png -->
+            <!-- IMPORTANT: Make sure your logo is at assets/images/logo.png -->
             <img src="assets/images/logo.png" alt="Successo Media Logo">
         </div>
     </header>
@@ -35,14 +35,9 @@
 
         <!-- Reel 1: Hero Section -->
         <section class="reel" id="home">
-            <div class="video-background">
-                <!-- Royalty-free background video from Pexels (NEW, WORKING LINK) -->
-                <video playsinline autoplay muted loop poster="https://placehold.co/1920x1080/1a1a1a/333333?text=Loading...">
-                    <!-- This new video source is stable and will work correctly. -->
-                    <source src="https://videos.pexels.com/video-files/4434242/4434242-hd_1920_1080_25fps.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+            <!-- Canvas for the flying emoji background -->
+            <canvas id="emoji-canvas"></canvas>
+            
             <div class="content">
                 <h1 class="animate-on-scroll">We Don't Just Advertise. <br> We Engineer Influence.</h1>
                 <p class="animate-on-scroll">Scroll to discover how.</p>
