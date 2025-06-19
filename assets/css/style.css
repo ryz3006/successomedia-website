@@ -5,7 +5,7 @@
     --font-heading: 'Cinzel', serif;
     --font-body: 'Inter', sans-serif;
     --color-primary: #D4AF37; /* A luxurious gold */
-    --color-background: #121212;
+    --color-background: #1a2a40; /* UPDATED: New deep blue background */
     --color-text: #EAEAEA;
 }
 
@@ -156,7 +156,8 @@ p {
 .service-item,
 .timeline-content,
 .testimonial-slide {
-    background: rgba(26, 26, 26, 0.5);
+    /* UPDATED: New blue glass effect */
+    background: rgba(44, 62, 80, 0.45);
     backdrop-filter: blur(12px) saturate(150%);
     -webkit-backdrop-filter: blur(12px) saturate(150%);
     border-radius: 15px;
@@ -215,11 +216,11 @@ p {
 .testimonial-slide h4 { font-weight: 700; color: var(--color-primary); }
 .carousel-nav { text-align: center; margin-top: 1rem; }
 .carousel-nav button { background: transparent; border: 2px solid var(--color-primary); color: var(--color-primary); border-radius: 50%; width: 40px; height: 40px; font-size: 1rem; margin: 0 10px; cursor: pointer; transition: all 0.3s ease; }
-.carousel-nav button:hover { background: var(--color-primary); color: #1a1a1a; }
+.carousel-nav button:hover { background: var(--color-primary); color: var(--color-background); }
 
 /* Contact Info */
 .contact-info { margin-top: 2rem; }
-.contact-button { display: inline-block; padding: 12px 25px; background-color: var(--color-primary); color: #1a1a1a; text-decoration: none; font-weight: 700; border-radius: 50px; transition: transform 0.3s ease; margin-bottom: 1rem; }
+.contact-button { display: inline-block; padding: 12px 25px; background-color: var(--color-primary); color: var(--color-background); text-decoration: none; font-weight: 700; border-radius: 50px; transition: transform 0.3s ease; margin-bottom: 1rem; }
 .contact-button:hover { transform: scale(1.05); }
 .phone-number { font-size: 1rem; }
 .site-footer-bottom { position: absolute; bottom: 10px; width: 100%; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); z-index: 3; }
@@ -240,7 +241,13 @@ p {
 .floating-boy-contact:hover { transform: scale(1.1) rotate(5deg); }
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); z-index: 1000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
 .modal-overlay.show { opacity: 1; visibility: visible; }
-.modal-content { background: rgba(26, 26, 26, 0.6); backdrop-filter: blur(15px) saturate(180%); -webkit-backdrop-filter: blur(15px) saturate(180%); padding: 2.5rem; border-radius: 20px; width: 90%; max-width: 500px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); position: relative; transform: scale(0.95); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.modal-content { 
+    /* UPDATED: New blue glass effect for modal */
+    background: rgba(44, 62, 80, 0.6); 
+    backdrop-filter: blur(15px) saturate(180%); 
+    -webkit-backdrop-filter: blur(15px) saturate(180%); 
+    padding: 2.5rem; border-radius: 20px; width: 90%; max-width: 500px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); position: relative; transform: scale(0.95); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
 .modal-overlay.show .modal-content { transform: scale(1); }
 .modal-close { position: absolute; top: 15px; right: 15px; background: transparent; border: none; font-size: 2.5rem; color: #fff; cursor: pointer; line-height: 1; padding: 0; transition: transform 0.3s ease, color 0.3s ease; }
 .modal-close:hover { color: var(--color-primary); transform: rotate(90deg); }
@@ -275,16 +282,15 @@ p {
         background-image: url('../images/mobile_bg.png');
     }
     
-    /* UPDATED: Show nav on mobile and adjust header layout */
     .site-header {
         justify-content: space-between;
     }
     .header-nav {
-        display: flex; /* Ensure it's visible */
-        gap: 15px; /* Reduce gap */
+        display: flex; 
+        gap: 15px; 
     }
     .header-nav a {
-        font-size: 0.9rem; /* Slightly smaller font */
+        font-size: 0.9rem;
     }
 
     h1, #home h1 { font-size: 2.5rem; }
@@ -292,7 +298,6 @@ p {
     p { font-size: 1rem; }
     .logo img { height: 40px; }
     
-    /* Apply specific alignment and padding for mobile */
     #services, #process, #testimonials {
         padding-top: 100px;
         padding-bottom: 40px;
