@@ -1,7 +1,6 @@
 // script.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    // REMOVED: All code for the emoji canvas has been deleted.
 
     // --- Animate on Scroll functionality ---
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
@@ -20,22 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeline = document.querySelector('.timeline');
     if (timeline) { observer.observe(timeline); }
 
-    // --- Click Handlers ---
-    const scrollArrowLink = document.querySelector('.scroll-indicator a');
-    if (scrollArrowLink) {
-        scrollArrowLink.addEventListener('click', function(e) {
+    // --- Smooth Scrolling for all anchor links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
-    }
+    });
 
-    const logoLink = document.getElementById('logo-link');
-    if(logoLink){
-        logoLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('#home').scrollIntoView({ behavior: 'smooth' });
-        });
-    }
 
     // --- Contact Modal Logic ---
     const contactBoy = document.getElementById('contact-boy-container');
@@ -59,18 +56,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const prevButton = document.getElementById('prevBtn');
         let currentIndex = 0;
 
-        const updateSlidePosition = () => {
-            track.style.transform = 'translateX(' + (-100 * currentIndex) + '%)';
-        };
+        if(slides.length > 0){ // Ensure there are slides before adding listeners
+            const updateSlidePosition = () => {
+                track.style.transform = 'translateX(' + (-100 * currentIndex) + '%)';
+            };
 
-        nextButton.addEventListener('click', e => {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateSlidePosition();
-        });
+            nextButton.addEventListener('click', e => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlidePosition();
+            });
 
-        prevButton.addEventListener('click', e => {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            updateSlidePosition();
-        });
+            prevButton.addEventListener('click', e => {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateSlidePosition();
+            });
+        }
     }
 });
