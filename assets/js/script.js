@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const homeSection = document.getElementById('home');
 
     // Array of youthful emojis. Feel free to add or change them!
-    const emojiPool = ['🚀', '✨', '🔥', '💡', '📈', '🎯', '🎬', '📣', '🌟', '💎', '🎉'];
+    const emojiPool = ['🚀', '✨', '🔥', '💡', '📈', '🎯', '🎬', '📣', '🌟', '💎', '🎉', '😀', '😎', '👻', '🤖', '😈', '🤯', '👋', '👌', '👏', '🕵️‍♀️', '👓', '👑', '🚵🏻', '🏂🏻', '🧙🏼‍♂️', '🚗', '🚤', '❤️', '💔', '☮️', '💗', '💘', '🇮🇳', '🫴', '🥹', '🍃', '🌎'];
     
     // Array of beautiful pastel colors
     const pastelColors = [
