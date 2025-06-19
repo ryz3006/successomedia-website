@@ -1,65 +1,7 @@
 // script.js
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    // --- Flying Emoji Background Logic ---
-    const canvas = document.getElementById('emoji-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        const homeSection = document.getElementById('home');
-        const emojiPool = ['🚀', '✨', '🔥', '💡', '📈', '🎯', '🎬', '📣', '🌟', '💎', '🎉', '😀', '😎', '👻', '🤖', '😈', '🤯', '👋', '👌', '👏', '🕵️‍♀️', '👓', '👑', '🚵🏻', '🏂🏻', '🧙🏼‍♂️', '🚗', '🚤', '❤️', '💔', '☮️', '💗', '💘', '🇮🇳', '🫴', '🥹', '🍃', '🌎'];
-        const pastelColors = ['#6a7d97', '#758aa1', '#8098ab', '#8babac', '#96bcb6', '#a1cdc1', '#addecb', '#baeed5', '#c5fedf', '#d1ffe9', '#7d6a97', '#8a75a1', '#9880ab', '#a68bab', '#b496b6'];
-        let particles = [];
-        let currentEmojis = [];
-
-        function setupAnimation() {
-            homeSection.style.backgroundColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            currentEmojis = [];
-            const emojiPoolCopy = [...emojiPool];
-            for (let i = 0; i < 5; i++) {
-                if (emojiPoolCopy.length === 0) break;
-                const randomIndex = Math.floor(Math.random() * emojiPoolCopy.length);
-                currentEmojis.push(emojiPoolCopy.splice(randomIndex, 1)[0]);
-            }
-            particles = [];
-            const particleCount = 25;
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(createParticle());
-            }
-        }
-
-        function createParticle() {
-            const x = Math.random() * canvas.width;
-            const y = Math.random() * canvas.height;
-            const size = Math.random() * 20 + 20;
-            const speedX = Math.random() * 1 - 0.5;
-            const speedY = Math.random() * 1 + 0.5;
-            const emoji = currentEmojis[Math.floor(Math.random() * currentEmojis.length)];
-            return { x, y, size, speedX, speedY, emoji };
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.x += p.speedX;
-                p.y += p.speedY;
-                if (p.y > canvas.height + p.size) {
-                    p.y = -p.size;
-                    p.x = Math.random() * canvas.width;
-                }
-                if (p.x > canvas.width + p.size) { p.x = -p.size; }
-                if (p.x < -p.size) { p.x = canvas.width + p.size; }
-                ctx.font = `${p.size}px Arial`;
-                ctx.fillText(p.emoji, p.x, p.y);
-            });
-            requestAnimationFrame(animate);
-        }
-        setupAnimation();
-        animate();
-        window.addEventListener('resize', setupAnimation);
-    }
+    // REMOVED: All code for the emoji canvas has been deleted.
 
     // --- Animate on Scroll functionality ---
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
@@ -87,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // UPDATED: Logo click handler
     const logoLink = document.getElementById('logo-link');
     if(logoLink){
         logoLink.addEventListener('click', function(e) {
@@ -110,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // --- NEW: Testimonial Carousel Logic ---
+    // --- Testimonial Carousel Logic ---
     const track = document.querySelector('.testimonial-track');
     if (track) {
         const slides = Array.from(track.children);
