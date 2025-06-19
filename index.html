@@ -25,8 +25,10 @@
     <!-- Header with Logo -->
     <header class="site-header">
         <div class="logo">
-            <!-- IMPORTANT: Make sure your logo is at assets/images/logo.png -->
-            <img src="assets/images/logo.png" alt="Successo Media Logo">
+            <!-- UPDATED: Wrapped logo in an anchor tag -->
+            <a href="#home" id="logo-link" aria-label="Back to top">
+                <img src="assets/images/logo.png" alt="Successo Media Logo">
+            </a>
         </div>
     </header>
 
@@ -35,14 +37,11 @@
 
         <!-- Reel 1: Hero Section -->
         <section class="reel" id="home">
-            <!-- Canvas for the flying emoji background -->
             <canvas id="emoji-canvas"></canvas>
-            
             <div class="content">
                 <h1 class="animate-on-scroll">We Don't Just Advertise. <br> We Engineer Influence.</h1>
                 <p class="animate-on-scroll">Scroll to discover how.</p>
             </div>
-            <!-- UPDATED: Wrapped icon in an anchor tag -->
             <div class="scroll-indicator animate-on-scroll">
                 <a href="#about" aria-label="Scroll to about section">
                     <i class="fa-solid fa-arrow-down"></i>
@@ -65,35 +64,82 @@
             <div class="content">
                 <h2 class="animate-on-scroll">Our Services</h2>
                 <div class="services-grid">
-                    <div class="service-item animate-on-scroll">
-                        <i class="fa-solid fa-video"></i>
-                        <h3>Dynamic Video Advertising</h3>
+                    <div class="service-item animate-on-scroll"><i class="fa-solid fa-video"></i><h3>Dynamic Video Advertising</h3></div>
+                    <div class="service-item animate-on-scroll"><i class="fa-solid fa-bullhorn"></i><h3>Influencer-Style Content</h3></div>
+                    <div class="service-item animate-on-scroll"><i class="fa-solid fa-users"></i><h3>Social Media Management</h3></div>
+                    <div class="service-item animate-on-scroll"><i class="fa-solid fa-lightbulb"></i><h3>Creative Campaign Strategy</h3></div>
+                    <div class="service-item animate-on-scroll"><i class="fa-solid fa-chart-line"></i><h3>Targeted Lead Generation</h3></div>
+                    <div class="service-item animate-on-scroll"><i class="fa-solid fa-magnifying-glass-chart"></i><h3>SEO-Optimized Content</h3></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW REEL 4: Our Process -->
+        <section class="reel" id="process">
+            <div class="content">
+                <h2 class="animate-on-scroll">Our Process</h2>
+                <div class="timeline">
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                        <div class="timeline-content">
+                            <h3>01. Discover</h3>
+                            <p>We dive deep into your brand, audience, and goals to build a rock-solid strategy.</p>
+                        </div>
                     </div>
-                    <div class="service-item animate-on-scroll">
-                        <i class="fa-solid fa-bullhorn"></i>
-                        <h3>Influencer-Style Content</h3>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-icon"><i class="fa-solid fa-pencil-ruler"></i></div>
+                        <div class="timeline-content">
+                            <h3>02. Create</h3>
+                            <p>Our creative team brings ideas to life with compelling visuals and engaging stories.</p>
+                        </div>
                     </div>
-                    <div class="service-item animate-on-scroll">
-                        <i class="fa-solid fa-users"></i>
-                        <h3>Social Media Management</h3>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-icon"><i class="fa-solid fa-rocket"></i></div>
+                        <div class="timeline-content">
+                            <h3>03. Launch</h3>
+                            <p>We deploy campaigns across the right channels to maximize reach and impact.</p>
+                        </div>
                     </div>
-                     <div class="service-item animate-on-scroll">
-                        <i class="fa-solid fa-lightbulb"></i>
-                        <h3>Creative Campaign Strategy</h3>
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                        <div class="timeline-content">
+                            <h3>04. Analyze</h3>
+                            <p>We track performance, gather insights, and optimize for continuous growth.</p>
+                        </div>
                     </div>
-                    <div class="service-item animate-on-scroll">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <h3>Targeted Lead Generation</h3>
+                </div>
+            </div>
+        </section>
+        
+        <!-- NEW REEL 5: Testimonials -->
+        <section class="reel" id="testimonials">
+            <div class="content">
+                <h2 class="animate-on-scroll">What Our Clients Say</h2>
+                <div class="testimonial-carousel animate-on-scroll">
+                    <div class="testimonial-track">
+                        <!-- Add your testimonials here -->
+                        <div class="testimonial-slide">
+                            <p>"Successo Media transformed our online presence. Their creativity and energy are unmatched!"</p>
+                            <h4>- Alex Johnson, Local Eatery</h4>
+                        </div>
+                        <div class="testimonial-slide">
+                            <p>"The video campaign they produced was a game-changer for our brand. Highly recommended."</p>
+                            <h4>- Priya Sharma, Fashion Startup</h4>
+                        </div>
+                        <div class="testimonial-slide">
+                            <p>"A dedicated team that truly understands the digital landscape. It's been a pleasure working with them."</p>
+                            <h4>- Michael Chen, Tech Firm</h4>
+                        </div>
                     </div>
-                    <div class="service-item animate-on-scroll">
-                        <i class="fa-solid fa-magnifying-glass-chart"></i>
-                        <h3>SEO-Optimized Content</h3>
+                    <div class="carousel-nav">
+                        <button id="prevBtn" aria-label="Previous testimonial"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button id="nextBtn" aria-label="Next testimonial"><i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Reel 4: Contact & Socials -->
+        <!-- Reel 6: Contact & Socials -->
         <section class="reel" id="contact">
             <div class="content">
                 <h2 class="animate-on-scroll">Let's Create Success, <br> Together.</h2>
@@ -106,7 +152,6 @@
                     <a href="https://www.instagram.com/successomedia" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                     <a href="https://x.com/successomedia" target="_blank" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
                     <a href="https://www.facebook.com/share/1ArmQxRJoC/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" target="_blank" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
                 </div>
             </div>
              <footer class="site-footer-bottom">
@@ -116,30 +161,21 @@
 
     </main>
     
-    <!-- NEW: Floating Contact Boy -->
+    <!-- Floating Contact Boy -->
     <div id="contact-boy-container" class="floating-boy-contact">
         <img src="assets/images/successo_boy_mobile.png" alt="Contact Us">
     </div>
 
-    <!-- NEW: Contact Modal -->
+    <!-- Contact Modal -->
     <div id="contact-modal-overlay" class="modal-overlay">
         <div class="modal-content">
             <button id="modal-close-button" class="modal-close" aria-label="Close modal">&times;</button>
             <h2>Get In Touch</h2>
             <p>Ready to amplify your brand? Reach out to us!</p>
             <div class="modal-contact-details">
-                <div class="modal-contact-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <a href="mailto:contact.successomedia@gmail.com">contact.successomedia@gmail.com</a>
-                </div>
-                <div class="modal-contact-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <span>+91 81389 23845</span>
-                </div>
-                <div class="modal-contact-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <span>+91 79074 78932</span>
-                </div>
+                <div class="modal-contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:contact.successomedia@gmail.com">contact.successomedia@gmail.com</a></div>
+                <div class="modal-contact-item"><i class="fa-solid fa-phone"></i><span>+91 81389 23845</span></div>
+                <div class="modal-contact-item"><i class="fa-solid fa-phone"></i><span>+91 79074 78932</span></div>
             </div>
             <div class="social-links">
                 <a href="https://www.instagram.com/successomedia" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -148,7 +184,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Your Custom JavaScript -->
     <script src="assets/js/script.js"></script>
