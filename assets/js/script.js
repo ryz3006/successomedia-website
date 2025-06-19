@@ -8,7 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const homeSection = document.getElementById('home');
 
     // Array of youthful emojis. Feel free to add or change them!
-    const emojiPool = ['🚀', '✨', '🔥', '💡', '📈', '🎯', '🎬', '📣', '🌟', '💎', '🎉', '😀', '😎', '👻', '🤖', '😈', '🤯', '👋', '👌', '👏', '🕵️‍♀️', '👓', '👑', '🚵🏻', '🏂🏻', '🧙🏼‍♂️', '🚗', '🚤', '❤️', '💔', '☮️', '💗', '💘', '🇮🇳', '🫴', '🥹', '🍃', '🌎'];
+    const emojiPool = [
+        '🚀', '✨', '🔥', '💡', '📈', '�', '🎬', '📣', '🌟', '💎', '🎉', '😀', 
+        '😎', '👻', '🤖', '😈', '🤯', '👋', '👌', '👏', '🕵️‍♀️', '👓', '👑', 
+        '🚵🏻', '🏂🏻', '🧙🏼‍♂️', '🚗', '🚤', '❤️', '💔', '☮️', '💗', '💘', '🇮🇳', 
+        '🫴', '🥹', '🍃', '🌎'
+    ];
     
     // Array of beautiful pastel colors
     const pastelColors = [
@@ -34,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentEmojis = [];
         const emojiPoolCopy = [...emojiPool];
         for(let i=0; i<5; i++){
+            if(emojiPoolCopy.length === 0) break; // Stop if we run out of emojis
             const randomIndex = Math.floor(Math.random() * emojiPoolCopy.length);
             currentEmojis.push(emojiPoolCopy.splice(randomIndex, 1)[0]);
         }
@@ -123,6 +129,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const servicesGrid = document.querySelector('.services-grid');
     if(servicesGrid) {
         observer.observe(servicesGrid);
+    }
+
+    // --- Scroll Arrow Click Handler ---
+    const scrollArrowLink = document.querySelector('.scroll-indicator a');
+    if(scrollArrowLink) {
+        scrollArrowLink.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default anchor jump
+            const nextSection = document.querySelector('#about');
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
     }
 
 });
