@@ -63,7 +63,8 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+    /* UPDATED: Made gradient darker for better logo visibility */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent);
 }
 
 .logo img {
@@ -83,7 +84,7 @@ h1 {
     font-size: 3.5rem;
     line-height: 1.2;
     margin-bottom: 1rem;
-    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5); /* Text shadow for readability on any BG */
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
@@ -104,11 +105,10 @@ p {
 
 /* Hero Reel (#home) */
 #home {
-    transition: background-color 1s ease; /* Smooth transition for color change */
+    transition: background-color 1s ease;
 }
 
 #home::before {
-    /* Optional overlay for better text readability */
     content: '';
     position: absolute;
     top: 0;
@@ -119,17 +119,16 @@ p {
     z-index: 1;
 }
 
-/* Gradient fade at the bottom of the hero section */
 #home::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 25vh; /* Controls the height of the fade effect */
+    height: 25vh;
     z-index: 1;
     background: linear-gradient(to top, var(--color-background) 10%, transparent);
-    pointer-events: none; /* Allows clicks to pass through the gradient */
+    pointer-events: none;
 }
 
 #emoji-canvas {
@@ -138,17 +137,17 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* Ensures it's behind the content */
+    z-index: 0;
 }
 
 #home h1 {
-    font-size: 4rem; /* Larger font for the hero */
+    font-size: 4rem;
     color: white;
 }
 
 #home p {
     font-size: 1.2rem;
-    color: white; /* Changed to white for better contrast on pastel colors */
+    color: white;
     font-weight: 600;
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 }
@@ -163,35 +162,27 @@ p {
     color: white;
     animation: bounce 2s infinite;
 }
-/* Styling for the anchor tag on the scroll indicator */
 .scroll-indicator a {
-    color: inherit; /* Inherits the white color from its parent */
+    color: inherit;
     text-decoration: none;
     cursor: pointer;
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-20px);
-    }
-    60% {
-        transform: translateY(-10px);
-    }
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
 }
 
-/* About Reel */
-#about {
+/* Other Reels */
+#about, #process, #testimonials, #contact {
     background: var(--color-background);
 }
-
-/* Services Reel (#services) */
 #services {
     background: #1a1a1a;
 }
 
+/* Services Grid */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -224,15 +215,111 @@ p {
     color: var(--color-background);
 }
 
+/* --- NEW: Process Timeline Styles --- */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem 0;
+}
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: var(--color-primary);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1.5px;
+    opacity: 0.3;
+}
+.timeline-item {
+    padding: 1rem 40px;
+    position: relative;
+    width: 50%;
+}
+.timeline-item:nth-child(odd) { left: 0; }
+.timeline-item:nth-child(even) { left: 50%; text-align: left;}
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: var(--color-background);
+    border: 4px solid var(--color-primary);
+    top: 28px;
+    border-radius: 50%;
+    z-index: 1;
+}
+.timeline-item:nth-child(even)::after { left: -10px; }
+.timeline-icon {
+    position: absolute;
+    top: 25px;
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    z-index: 2;
+}
+.timeline-item:nth-child(odd) .timeline-icon { right: -60px; }
+.timeline-item:nth-child(even) .timeline-icon { left: -60px; }
+.timeline-content {
+    padding: 1rem;
+    background: #1a1a1a;
+    border-radius: 10px;
+    text-align: right;
+}
+.timeline-item:nth-child(even) .timeline-content { text-align: left; }
+.timeline-content h3 { color: var(--color-primary); }
+.timeline-content p { font-size: 0.9rem; max-width: none;}
 
-/* Contact Reel (#contact) */
-#contact {
-    background: var(--color-background);
+/* --- NEW: Testimonial Carousel Styles --- */
+.testimonial-carousel {
+    max-width: 700px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+.testimonial-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.testimonial-slide {
+    min-width: 100%;
+    padding: 2rem;
+}
+.testimonial-slide p {
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+.testimonial-slide h4 {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+.carousel-nav {
+    text-align: center;
+    margin-top: 1rem;
+}
+.carousel-nav button {
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.carousel-nav button:hover {
+    background: var(--color-primary);
+    color: var(--color-background);
 }
 
-.contact-info {
-    margin-top: 2rem;
-}
+
+/* Contact Info */
+.contact-info { margin-top: 2rem; }
 .contact-button {
     display: inline-block;
     padding: 12px 25px;
@@ -244,16 +331,9 @@ p {
     transition: transform 0.3s ease;
     margin-bottom: 1rem;
 }
-.contact-button:hover {
-    transform: scale(1.05);
-}
-.phone-number {
-    font-size: 1rem;
-}
-
-.social-links {
-    margin-top: 2.5rem;
-}
+.contact-button:hover { transform: scale(1.05); }
+.phone-number { font-size: 1rem; }
+.social-links { margin-top: 2.5rem; }
 .social-links a {
     color: var(--color-text);
     font-size: 1.8rem;
@@ -264,7 +344,6 @@ p {
     color: var(--color-primary);
     transform: translateY(-5px);
 }
-
 .site-footer-bottom {
     position: absolute;
     bottom: 10px;
@@ -282,17 +361,14 @@ p {
     transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition-delay: 0.2s;
 }
-
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* Stagger animations for service items */
-.services-grid.is-visible .service-item:nth-child(1) { transition-delay: 0.2s; }
-.services-grid.is-visible .service-item:nth-child(2) { transition-delay: 0.3s; }
-.services-grid.is-visible .service-item:nth-child(3) { transition-delay: 0.4s; }
-.services-grid.is-visible .service-item:nth-child(4) { transition-delay: 0.5s; }
+.services-grid.is-visible .service-item:nth-child(1), .timeline.is-visible .timeline-item:nth-child(1) { transition-delay: 0.2s; }
+.services-grid.is-visible .service-item:nth-child(2), .timeline.is-visible .timeline-item:nth-child(2) { transition-delay: 0.3s; }
+.services-grid.is-visible .service-item:nth-child(3), .timeline.is-visible .timeline-item:nth-child(3) { transition-delay: 0.4s; }
+.services-grid.is-visible .service-item:nth-child(4), .timeline.is-visible .timeline-item:nth-child(4) { transition-delay: 0.5s; }
 .services-grid.is-visible .service-item:nth-child(5) { transition-delay: 0.6s; }
 .services-grid.is-visible .service-item:nth-child(6) { transition-delay: 0.7s; }
 
@@ -312,10 +388,7 @@ p {
     height: auto;
     filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4));
 }
-.floating-boy-contact:hover {
-    transform: scale(1.1) rotate(5deg);
-}
-
+.floating-boy-contact:hover { transform: scale(1.1) rotate(5deg); }
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -332,11 +405,7 @@ p {
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease;
 }
-.modal-overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
-
+.modal-overlay.show { opacity: 1; visibility: visible; }
 .modal-content {
     background: #1e1e1e;
     padding: 2.5rem;
@@ -350,10 +419,7 @@ p {
     transform: scale(0.95);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.modal-overlay.show .modal-content {
-    transform: scale(1);
-}
-
+.modal-overlay.show .modal-content { transform: scale(1); }
 .modal-close {
     position: absolute;
     top: 15px;
@@ -371,16 +437,8 @@ p {
     color: var(--color-primary);
     transform: rotate(90deg);
 }
-
-.modal-content h2 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-.modal-content p {
-    margin-bottom: 2rem;
-    color: var(--color-text);
-}
-
+.modal-content h2 { margin-top: 0; margin-bottom: 1rem; }
+.modal-content p { margin-bottom: 2rem; color: var(--color-text); }
 .modal-contact-details {
     display: flex;
     flex-direction: column;
@@ -388,30 +446,28 @@ p {
     margin-bottom: 2.5rem;
     text-align: left;
 }
-.modal-contact-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-.modal-contact-item i {
-    font-size: 1.5rem;
-    color: var(--color-primary);
-    width: 25px;
-}
+.modal-contact-item { display: flex; align-items: center; gap: 15px; }
+.modal-contact-item i { font-size: 1.5rem; color: var(--color-primary); width: 25px; }
 .modal-contact-item a, .modal-contact-item span {
     font-size: 1.1rem;
     color: var(--color-text);
     text-decoration: none;
 }
-.modal-contact-item a:hover {
-    text-decoration: underline;
-}
+.modal-contact-item a:hover { text-decoration: underline; }
 
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
     h1, #home h1 { font-size: 2.8rem; }
     h2 { font-size: 2.2rem; }
     .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .timeline::after { left: 31px; }
+    .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+    .timeline-item:nth-child(even) { left: 0; }
+    .timeline-item::after { left: 21px; }
+    .timeline-item:nth-child(even)::after { left: 21px; }
+    .timeline-icon { left: 15px; }
+    .timeline-item:nth-child(odd) .timeline-icon, .timeline-item:nth-child(even) .timeline-icon { right: auto; left: 15px;}
+    .timeline-content, .timeline-item:nth-child(even) .timeline-content { text-align: left; }
 }
 
 @media (max-width: 768px) {
