@@ -33,7 +33,6 @@ body {
 .reels-container {
     height: 100vh;
     width: 100%;
-    /* This is the key for the "reels" effect! */
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -53,18 +52,6 @@ body {
     overflow: hidden; /* Hide anything that spills out */
 }
 
-/* Add a subtle overlay to all reels for text readability */
-.reel::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
 /* --- Header & Logo --- */
 .site-header {
     position: fixed;
@@ -80,7 +67,7 @@ body {
 }
 
 .logo img {
-    height: 385px; /* Adjust height as needed */
+    height: 50px; /* Adjust height as needed */
     width: auto;
 }
 
@@ -94,10 +81,9 @@ body {
 h1 {
     font-family: var(--font-heading);
     font-size: 3.5rem;
-    color: white;
     line-height: 1.2;
     margin-bottom: 1rem;
-    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5); /* Text shadow for readability on any BG */
 }
 
 h2 {
@@ -117,24 +103,41 @@ p {
 /* --- Section-Specific Styling --- */
 
 /* Hero Reel (#home) */
-#home h1 {
-    font-size: 4rem; /* Larger font for the hero */
-}
-#home p {
-    font-size: 1.2rem;
-    color: var(--color-primary);
-    font-weight: 600;
+#home {
+    transition: background-color 1s ease; /* Smooth transition for color change */
 }
 
-.video-background {
+#home::before {
+    /* Optional overlay for better text readability, can be adjusted or removed */
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transform: translate(-50%, -50%);
-    z-index: 0;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+#emoji-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Ensures it's behind the content */
+}
+
+#home h1 {
+    font-size: 4rem; /* Larger font for the hero */
+    color: white;
+}
+
+#home p {
+    font-size: 1.2rem;
+    color: white; /* Changed to white for better contrast on pastel colors */
+    font-weight: 600;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 }
 
 .scroll-indicator {
@@ -160,10 +163,22 @@ p {
     }
 }
 
+/* About Reel */
+#about {
+    background: var(--color-background);
+}
+#about::before {
+    display: none; /* No overlay needed for dark BG */
+}
+
 /* Services Reel (#services) */
 #services {
     background: #1a1a1a;
 }
+#services::before {
+    display: none; /* No overlay needed for dark BG */
+}
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -198,6 +213,13 @@ p {
 
 
 /* Contact Reel (#contact) */
+#contact {
+    background: var(--color-background);
+}
+#contact::before {
+    display: none; /* No overlay needed for dark BG */
+}
+
 .contact-info {
     margin-top: 2rem;
 }
@@ -280,4 +302,3 @@ p {
     .services-grid { grid-template-columns: 1fr; gap: 1rem; }
     .service-item { padding: 1.5rem; }
 }
-
