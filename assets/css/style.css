@@ -1,0 +1,283 @@
+/* style.css */
+
+/* --- Base Setup & Variables --- */
+:root {
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Inter', sans-serif;
+    --color-primary: #D4AF37; /* A luxurious gold */
+    --color-background: #121212;
+    --color-text: #EAEAEA;
+    --color-text-dark: #333;
+    --header-height: 80px;
+}
+
+/* --- Reset and Global Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    overflow: hidden; /* Prevents double scrollbars */
+}
+
+/* --- Reels Container: The Core of the Layout --- */
+.reels-container {
+    height: 100vh;
+    width: 100%;
+    /* This is the key for the "reels" effect! */
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* --- Individual Reel Styling --- */
+.reel {
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 5%;
+    overflow: hidden; /* Hide anything that spills out */
+}
+
+/* Add a subtle overlay to all reels for text readability */
+.reel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* --- Header & Logo --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 5%;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+}
+
+.logo img {
+    height: 50px; /* Adjust height as needed */
+    width: auto;
+}
+
+/* --- Content Styling --- */
+.reel .content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
+}
+
+h2 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Section-Specific Styling --- */
+
+/* Hero Reel (#home) */
+#home h1 {
+    font-size: 4rem; /* Larger font for the hero */
+}
+#home p {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    font-size: 1.5rem;
+    color: white;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Services Reel (#services) */
+#services {
+    background: #1a1a1a;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+.service-item {
+    padding: 2rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 15px;
+    background: rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+.service-item:hover {
+    transform: translateY(-10px);
+    background: var(--color-primary);
+}
+.service-item i {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+.service-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+}
+.service-item:hover i, .service-item:hover h3 {
+    color: var(--color-background);
+}
+
+
+/* Contact Reel (#contact) */
+.contact-info {
+    margin-top: 2rem;
+}
+.contact-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+    margin-bottom: 1rem;
+}
+.contact-button:hover {
+    transform: scale(1.05);
+}
+.phone-number {
+    font-size: 1rem;
+}
+
+.social-links {
+    margin-top: 2.5rem;
+}
+.social-links a {
+    color: var(--color-text);
+    font-size: 1.8rem;
+    margin: 0 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-links a:hover {
+    color: var(--color-primary);
+    transform: translateY(-5px);
+}
+
+.site-footer-bottom {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    z-index: 3;
+}
+
+/* --- Animation on Scroll --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition-delay: 0.2s;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger animations for service items */
+.services-grid.is-visible .service-item:nth-child(1) { transition-delay: 0.2s; }
+.services-grid.is-visible .service-item:nth-child(2) { transition-delay: 0.3s; }
+.services-grid.is-visible .service-item:nth-child(3) { transition-delay: 0.4s; }
+.services-grid.is-visible .service-item:nth-child(4) { transition-delay: 0.5s; }
+.services-grid.is-visible .service-item:nth-child(5) { transition-delay: 0.6s; }
+.services-grid.is-visible .service-item:nth-child(6) { transition-delay: 0.7s; }
+
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    h1, #home h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    h1, #home h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    p { font-size: 1rem; }
+    .logo img { height: 40px; }
+    .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .service-item { padding: 1.5rem; }
+}
+
