@@ -52,6 +52,24 @@ body {
     overflow-x: hidden;
 }
 
+/* NEW: Custom Scrollbar Styling */
+.reels-container::-webkit-scrollbar {
+    width: 8px;
+}
+.reels-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+.reels-container::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+.reels-container::-webkit-scrollbar-thumb:hover {
+    background-color: #f8d05e;
+}
+
+
 /* --- Individual Reel Styling --- */
 .reel {
     min-height: 100vh;
@@ -131,43 +149,41 @@ h1, h2, p, h3, h4 {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
 }
 
+/* UPDATED: h1 styling for the new text */
 h1 {
-    font-family: var(--font-body); /* Using body font for the top line */
-    font-size: 2rem;
+    font-family: var(--font-body); 
+    font-size: 2.2rem;
     font-weight: 600;
     line-height: 1.4;
-    margin-bottom: 1rem;
-    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.5rem; /* Reduced margin */
+    color: rgba(255, 255, 255, 0.9);
 }
 
-/* Animated Brand Name */
+/* UPDATED: Brand name styling */
 .brand-name {
     font-family: var(--font-heading);
-    font-style: italic;
+    font-style: normal; /* Changed from italic */
     font-weight: 700;
-    font-size: 4rem;
+    font-size: 2.5rem;
     letter-spacing: 1px;
-    background: linear-gradient(90deg, #ffd700, #f8d05e, #e0c269, #ffd700);
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: text-glow 5s linear infinite;
+    color: var(--color-primary); /* Simpler color for readability */
+    display: block; /* Puts it on its own line */
+    margin-top: 0.25rem;
 }
-
-@keyframes text-glow {
-    to {
-        background-position: -200% center;
-    }
-}
-
 
 h2 {
     font-family: var(--font-heading);
     font-size: 2.8rem;
     color: var(--color-primary);
     margin-bottom: 1.5rem;
+}
+
+/* UPDATED: Subheading paragraph styling */
+#home > .content > p {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 1.5rem;
 }
 
 p {
@@ -248,7 +264,7 @@ p {
 .phone-number { font-size: 1rem; }
 .site-footer-bottom { position: absolute; bottom: 10px; width: 100%; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); z-index: 3; }
 
-/* --- Floating Boy and Modal Styles --- */
+/* --- Floating Boy and Modal Styles --- (unchanged) */
 .floating-boy-contact { position: fixed; bottom: 20px; right: 20px; width: 100px; height: 100px; z-index: 999; cursor: pointer; transition: transform 0.3s ease; }
 .floating-boy-contact img { width: 100%; height: auto; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4)); }
 .floating-boy-contact:hover { transform: scale(1.1) rotate(5deg); }
@@ -274,7 +290,7 @@ p {
 .social-links a { color: var(--color-text); font-size: 1.8rem; margin: 0 15px; transition: color 0.3s ease, transform 0.3s ease; }
 .social-links a:hover { color: var(--color-primary); transform: translateY(-5px); }
 
-/* --- Animation on Scroll --- */
+/* --- Animation on Scroll --- (unchanged) */
 .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1); transition-delay: 0.2s; }
 .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
 .services-grid.is-visible .service-item:nth-child(1), .timeline.is-visible .timeline-item:nth-child(1) { transition-delay: 0.2s; }
@@ -287,7 +303,7 @@ p {
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
     h1 { font-size: 1.8rem; }
-    .brand-name { font-size: 3.5rem; }
+    .brand-name { font-size: 2.2rem; }
     h2 { font-size: 2.2rem; }
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .timeline::after { left: 31px; }
@@ -317,7 +333,7 @@ p {
     }
 
     h1 { font-size: 1.5rem; }
-    .brand-name { font-size: 3rem; }
+    .brand-name { font-size: 2rem; }
     h2 { font-size: 2rem; }
     p { font-size: 1rem; }
     .logo img { height: 40px; }
