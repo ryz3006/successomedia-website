@@ -108,7 +108,7 @@ p {
 }
 
 #home::before {
-    /* Optional overlay for better text readability, can be adjusted or removed */
+    /* Optional overlay for better text readability */
     content: '';
     position: absolute;
     top: 0;
@@ -117,6 +117,19 @@ p {
     height: 100%;
     background: rgba(0, 0, 0, 0.1);
     z-index: 1;
+}
+
+/* Gradient fade at the bottom of the hero section */
+#home::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25vh; /* Controls the height of the fade effect */
+    z-index: 1;
+    background: linear-gradient(to top, var(--color-background) 10%, transparent);
+    pointer-events: none; /* Allows clicks to pass through the gradient */
 }
 
 #emoji-canvas {
@@ -150,6 +163,12 @@ p {
     color: white;
     animation: bounce 2s infinite;
 }
+/* Styling for the anchor tag on the scroll indicator */
+.scroll-indicator a {
+    color: inherit; /* Inherits the white color from its parent */
+    text-decoration: none;
+    cursor: pointer;
+}
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
@@ -167,16 +186,10 @@ p {
 #about {
     background: var(--color-background);
 }
-#about::before {
-    display: none; /* No overlay needed for dark BG */
-}
 
 /* Services Reel (#services) */
 #services {
     background: #1a1a1a;
-}
-#services::before {
-    display: none; /* No overlay needed for dark BG */
 }
 
 .services-grid {
@@ -215,9 +228,6 @@ p {
 /* Contact Reel (#contact) */
 #contact {
     background: var(--color-background);
-}
-#contact::before {
-    display: none; /* No overlay needed for dark BG */
 }
 
 .contact-info {
@@ -286,6 +296,116 @@ p {
 .services-grid.is-visible .service-item:nth-child(5) { transition-delay: 0.6s; }
 .services-grid.is-visible .service-item:nth-child(6) { transition-delay: 0.7s; }
 
+/* --- Floating Boy and Modal Styles --- */
+.floating-boy-contact {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    z-index: 999;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.floating-boy-contact img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4));
+}
+.floating-boy-contact:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #1e1e1e;
+    padding: 2.5rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    border: 1px solid var(--color-primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    position: relative;
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.modal-overlay.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.modal-close:hover {
+    color: var(--color-primary);
+    transform: rotate(90deg);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.modal-content p {
+    margin-bottom: 2rem;
+    color: var(--color-text);
+}
+
+.modal-contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+}
+.modal-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.modal-contact-item i {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    width: 25px;
+}
+.modal-contact-item a, .modal-contact-item span {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    text-decoration: none;
+}
+.modal-contact-item a:hover {
+    text-decoration: underline;
+}
 
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
@@ -301,4 +421,6 @@ p {
     .logo img { height: 40px; }
     .services-grid { grid-template-columns: 1fr; gap: 1rem; }
     .service-item { padding: 1.5rem; }
+    .floating-boy-contact { width: 80px; height: 80px; bottom: 15px; right: 15px;}
+    .modal-content { padding: 2rem 1.5rem; }
 }
