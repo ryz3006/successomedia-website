@@ -2,10 +2,10 @@
 
 /* --- Base Setup & Variables --- */
 :root {
-    --font-heading: 'Cinzel', serif;
+    --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
     --color-primary: #D4AF37; /* A luxurious gold */
-    --color-background: #1a2a40; /* UPDATED: New deep blue background */
+    --color-background: #1a2a40; 
     --color-text: #EAEAEA;
 }
 
@@ -132,11 +132,36 @@ h1, h2, p, h3, h4 {
 }
 
 h1 {
-    font-family: var(--font-heading);
-    font-size: 3.5rem;
-    line-height: 1.2;
+    font-family: var(--font-body); /* Using body font for the top line */
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.4;
     margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
 }
+
+/* Animated Brand Name */
+.brand-name {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 4rem;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #ffd700, #f8d05e, #e0c269, #ffd700);
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-glow 5s linear infinite;
+}
+
+@keyframes text-glow {
+    to {
+        background-position: -200% center;
+    }
+}
+
 
 h2 {
     font-family: var(--font-heading);
@@ -156,7 +181,6 @@ p {
 .service-item,
 .timeline-content,
 .testimonial-slide {
-    /* UPDATED: New blue glass effect */
     background: rgba(44, 62, 80, 0.45);
     backdrop-filter: blur(12px) saturate(150%);
     -webkit-backdrop-filter: blur(12px) saturate(150%);
@@ -189,7 +213,7 @@ p {
 .service-item { padding: 2rem; transition: transform 0.3s ease, background-color 0.3s ease; }
 .service-item:hover { transform: translateY(-10px); background-color: rgba(212, 175, 55, 0.2); }
 .service-item i { font-size: 2.5rem; color: var(--color-primary); margin-bottom: 1rem; }
-.service-item h3 { font-size: 1.2rem; font-weight: 600; color: white; }
+.service-item h3 { font-family: var(--font-body); font-size: 1.2rem; font-weight: 600; color: white; }
 
 /* Process Timeline Styles */
 .timeline { position: relative; max-width: 800px; margin: 1.5rem auto; padding: 2rem 0; }
@@ -197,7 +221,6 @@ p {
 .timeline-item { padding: 1rem 40px; position: relative; width: 50%; }
 .timeline-item:nth-child(odd) { left: 0; }
 .timeline-item:nth-child(even) { left: 50%;}
-/* Explicitly set text-align for timeline content to override parent */
 .timeline-content { padding: 1rem; text-align: right; }
 .timeline-item:nth-child(even) .timeline-content { text-align: left; }
 .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background-color: var(--color-background); border: 4px solid var(--color-primary); top: 28px; border-radius: 50%; z-index: 1; }
@@ -205,7 +228,7 @@ p {
 .timeline-icon { position: absolute; top: 25px; font-size: 1.8rem; color: var(--color-primary); z-index: 2; }
 .timeline-item:nth-child(odd) .timeline-icon { right: -60px; }
 .timeline-item:nth-child(even) .timeline-icon { left: -60px; }
-.timeline-content h3 { color: var(--color-primary); }
+.timeline-content h3 { font-family: var(--font-body); color: var(--color-primary); }
 .timeline-content p { font-size: 0.9rem; max-width: none;}
 
 /* Testimonial Carousel Styles */
@@ -213,7 +236,7 @@ p {
 .testimonial-track { display: flex; transition: transform 0.5s ease-in-out; }
 .testimonial-slide { min-width: 100%; padding: 2rem; }
 .testimonial-slide p { font-style: italic; font-size: 1.2rem; margin-bottom: 1rem; }
-.testimonial-slide h4 { font-weight: 700; color: var(--color-primary); }
+.testimonial-slide h4 { font-family: var(--font-body); font-weight: 700; color: var(--color-primary); }
 .carousel-nav { text-align: center; margin-top: 1rem; }
 .carousel-nav button { background: transparent; border: 2px solid var(--color-primary); color: var(--color-primary); border-radius: 50%; width: 40px; height: 40px; font-size: 1rem; margin: 0 10px; cursor: pointer; transition: all 0.3s ease; }
 .carousel-nav button:hover { background: var(--color-primary); color: var(--color-background); }
@@ -225,24 +248,13 @@ p {
 .phone-number { font-size: 1rem; }
 .site-footer-bottom { position: absolute; bottom: 10px; width: 100%; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.5); z-index: 3; }
 
-/* --- Animation on Scroll --- (unchanged) */
-.animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1); transition-delay: 0.2s; }
-.animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
-.services-grid.is-visible .service-item:nth-child(1), .timeline.is-visible .timeline-item:nth-child(1) { transition-delay: 0.2s; }
-.services-grid.is-visible .service-item:nth-child(2), .timeline.is-visible .timeline-item:nth-child(2) { transition-delay: 0.3s; }
-.services-grid.is-visible .service-item:nth-child(3), .timeline.is-visible .timeline-item:nth-child(3) { transition-delay: 0.4s; }
-.services-grid.is-visible .service-item:nth-child(4), .timeline.is-visible .timeline-item:nth-child(4) { transition-delay: 0.5s; }
-.services-grid.is-visible .service-item:nth-child(5) { transition-delay: 0.6s; }
-.services-grid.is-visible .service-item:nth-child(6) { transition-delay: 0.7s; }
-
-/* --- Floating Boy and Modal Styles --- (unchanged) */
+/* --- Floating Boy and Modal Styles --- */
 .floating-boy-contact { position: fixed; bottom: 20px; right: 20px; width: 100px; height: 100px; z-index: 999; cursor: pointer; transition: transform 0.3s ease; }
 .floating-boy-contact img { width: 100%; height: auto; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4)); }
 .floating-boy-contact:hover { transform: scale(1.1) rotate(5deg); }
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); z-index: 1000; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
 .modal-overlay.show { opacity: 1; visibility: visible; }
 .modal-content { 
-    /* UPDATED: New blue glass effect for modal */
     background: rgba(44, 62, 80, 0.6); 
     backdrop-filter: blur(15px) saturate(180%); 
     -webkit-backdrop-filter: blur(15px) saturate(180%); 
@@ -262,9 +274,20 @@ p {
 .social-links a { color: var(--color-text); font-size: 1.8rem; margin: 0 15px; transition: color 0.3s ease, transform 0.3s ease; }
 .social-links a:hover { color: var(--color-primary); transform: translateY(-5px); }
 
+/* --- Animation on Scroll --- */
+.animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1); transition-delay: 0.2s; }
+.animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+.services-grid.is-visible .service-item:nth-child(1), .timeline.is-visible .timeline-item:nth-child(1) { transition-delay: 0.2s; }
+.services-grid.is-visible .service-item:nth-child(2), .timeline.is-visible .timeline-item:nth-child(2) { transition-delay: 0.3s; }
+.services-grid.is-visible .service-item:nth-child(3), .timeline.is-visible .timeline-item:nth-child(3) { transition-delay: 0.4s; }
+.services-grid.is-visible .service-item:nth-child(4), .timeline.is-visible .timeline-item:nth-child(4) { transition-delay: 0.5s; }
+.services-grid.is-visible .service-item:nth-child(5) { transition-delay: 0.6s; }
+.services-grid.is-visible .service-item:nth-child(6) { transition-delay: 0.7s; }
+
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
-    h1, #home h1 { font-size: 2.8rem; }
+    h1 { font-size: 1.8rem; }
+    .brand-name { font-size: 3.5rem; }
     h2 { font-size: 2.2rem; }
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .timeline::after { left: 31px; }
@@ -293,7 +316,8 @@ p {
         font-size: 0.9rem;
     }
 
-    h1, #home h1 { font-size: 2.5rem; }
+    h1 { font-size: 1.5rem; }
+    .brand-name { font-size: 3rem; }
     h2 { font-size: 2rem; }
     p { font-size: 1rem; }
     .logo img { height: 40px; }
@@ -306,7 +330,6 @@ p {
         padding-top: 60px;
         padding-bottom: 60px;
     }
-
 
     .services-grid { grid-template-columns: 1fr; gap: 1rem; margin-top: 1.5rem; }
     .service-item { padding: 1.5rem; }
