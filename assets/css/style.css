@@ -41,17 +41,18 @@ body {
 /* --- Individual Reel Styling --- */
 .reel {
     /* UPDATED: Using svh unit for better mobile viewport handling */
-    height: 100vh; /* Fallback for older browsers */
-    height: 100svh; /* Smallest viewport height */
+    min-height: 100vh; /* Fallback for older browsers */
+    min-height: 100svh; /* Smallest viewport height */
+    height: auto; /* Allow section to grow taller than the viewport */
     width: 100%;
     scroll-snap-align: start;
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; /* Default alignment */
     text-align: center;
     padding: 0 5%;
-    overflow: hidden; /* Hide anything that spills out */
+    /* overflow: hidden; <-- REMOVED to allow tall content to be scrollable */
 }
 
 /* --- Header & Logo --- */
@@ -108,6 +109,8 @@ p {
 /* Hero Reel (#home) */
 #home {
     transition: background-color 1s ease;
+    height: 100vh; /* Keep hero section fixed to viewport height */
+    height: 100svh;
 }
 
 #home::before {
@@ -177,12 +180,24 @@ p {
 }
 
 /* Other Reels */
-#about, #process, #testimonials, #contact {
+#about, #contact {
     background: var(--color-background);
 }
+
+/* UPDATED: Specific alignment for tall sections */
+#services, #process, #testimonials {
+    align-items: flex-start; /* Aligns content to the top */
+    padding-top: 120px; /* Pushes content down below the fixed header */
+    padding-bottom: 60px; /* Add some space at the bottom */
+}
+
 #services {
     background: #1a1a1a;
 }
+#process, #testimonials {
+    background: var(--color-background);
+}
+
 
 /* Services Grid */
 .services-grid {
@@ -221,8 +236,7 @@ p {
 .timeline {
     position: relative;
     max-width: 800px;
-    /* UPDATED: Reduced top margin to prevent heading from being pushed out */
-    margin: 1rem auto 2rem; 
+    margin: 2rem auto;
     padding: 2rem 0;
 }
 .timeline::after {
@@ -478,17 +492,21 @@ p {
     h2 { font-size: 1.8rem; margin-bottom: 1rem; }
     p { font-size: 1rem; }
     .logo img { height: 40px; }
+    /* UPDATED: Apply top alignment and padding for tall sections on mobile */
+    #services, #process, #testimonials {
+        padding-top: 100px;
+        padding-bottom: 40px;
+    }
     .services-grid { 
         grid-template-columns: 1fr; 
         gap: 1rem;
-        /* UPDATED: Reduced top margin to save vertical space */
         margin-top: 1.5rem;
     }
     .service-item { 
-        padding: 1rem; /* UPDATED: Reduced padding */
+        padding: 1rem;
     }
     .service-item h3 {
-        font-size: 1rem; /* UPDATED: Reduced font size */
+        font-size: 1rem;
     }
     .floating-boy-contact { width: 80px; height: 80px; bottom: 15px; right: 15px;}
     .modal-content { padding: 2rem 1.5rem; }
