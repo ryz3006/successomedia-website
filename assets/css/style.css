@@ -40,9 +40,8 @@ body {
 
 /* --- Individual Reel Styling --- */
 .reel {
-    /* UPDATED: Using svh unit for better mobile viewport handling */
     min-height: 100vh; /* Fallback for older browsers */
-    min-height: 100svh; /* Smallest viewport height */
+    min-height: 100svh; /* Smallest viewport height for mobile */
     height: auto; /* Allow section to grow taller than the viewport */
     width: 100%;
     scroll-snap-align: start;
@@ -52,7 +51,6 @@ body {
     align-items: center; /* Default alignment */
     text-align: center;
     padding: 0 5%;
-    /* overflow: hidden; <-- REMOVED to allow tall content to be scrollable */
 }
 
 /* --- Header & Logo --- */
@@ -184,7 +182,7 @@ p {
     background: var(--color-background);
 }
 
-/* UPDATED: Specific alignment for tall sections */
+/* Specific alignment for tall sections */
 #services, #process, #testimonials {
     align-items: flex-start; /* Aligns content to the top */
     padding-top: 120px; /* Pushes content down below the fixed header */
@@ -204,7 +202,8 @@ p {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    margin-top: 3rem;
+    /* UPDATED: Reduced top margin */
+    margin-top: 2rem;
 }
 .service-item {
     padding: 2rem;
@@ -236,7 +235,8 @@ p {
 .timeline {
     position: relative;
     max-width: 800px;
-    margin: 2rem auto;
+    /* UPDATED: Reduced margin */
+    margin: 1.5rem auto;
     padding: 2rem 0;
 }
 .timeline::after {
@@ -292,7 +292,8 @@ p {
 /* --- Testimonial Carousel Styles --- */
 .testimonial-carousel {
     max-width: 700px;
-    margin: auto;
+    /* UPDATED: Added top margin */
+    margin: 1.5rem auto 0;
     overflow: hidden;
     position: relative;
 }
@@ -492,7 +493,7 @@ p {
     h2 { font-size: 1.8rem; margin-bottom: 1rem; }
     p { font-size: 1rem; }
     .logo img { height: 40px; }
-    /* UPDATED: Apply top alignment and padding for tall sections on mobile */
+    /* Apply top alignment and padding for tall sections on mobile */
     #services, #process, #testimonials {
         padding-top: 100px;
         padding-bottom: 40px;
@@ -500,7 +501,8 @@ p {
     .services-grid { 
         grid-template-columns: 1fr; 
         gap: 1rem;
-        margin-top: 1.5rem;
+        /* UPDATED: Further reduced margin */
+        margin-top: 1rem;
     }
     .service-item { 
         padding: 1rem;
