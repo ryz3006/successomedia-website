@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     const homeSection = document.getElementById('home');
 
-    // Array of youthful emojis. Feel free to add or change them!
+    // Array of youthful emojis.
     const emojiPool = [
-        '🚀', '✨', '🔥', '💡', '📈', '�', '🎬', '📣', '🌟', '💎', '🎉', '😀', 
+        '🚀', '✨', '🔥', '�', '📈', '🎯', '🎬', '📣', '🌟', '💎', '🎉', '😀', 
         '😎', '👻', '🤖', '😈', '🤯', '👋', '👌', '👏', '🕵️‍♀️', '👓', '👑', 
         '🚵🏻', '🏂🏻', '🧙🏼‍♂️', '🚗', '🚤', '❤️', '💔', '☮️', '💗', '💘', '🇮🇳', 
         '🫴', '🥹', '🍃', '🌎'
@@ -139,6 +139,39 @@ document.addEventListener('DOMContentLoaded', () => {
             const nextSection = document.querySelector('#about');
             if (nextSection) {
                 nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // --- Contact Modal Logic ---
+    const contactBoy = document.getElementById('contact-boy-container');
+    const modalOverlay = document.getElementById('contact-modal-overlay');
+    const modalCloseButton = document.getElementById('modal-close-button');
+
+    // Function to open the modal
+    function openModal() {
+        if (modalOverlay) modalOverlay.classList.add('show');
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        if (modalOverlay) modalOverlay.classList.remove('show');
+    }
+
+    // Event listeners
+    if (contactBoy) {
+        contactBoy.addEventListener('click', openModal);
+    }
+
+    if (modalCloseButton) {
+        modalCloseButton.addEventListener('click', closeModal);
+    }
+
+    if (modalOverlay) {
+        // Close modal if user clicks on the overlay background
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+                closeModal();
             }
         });
     }
