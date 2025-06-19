@@ -62,9 +62,10 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
-    /* UPDATED: Vertical centering is now the default for all sections */
-    align-items: center;
+    align-items: center; /* Vertical centering is the default */
     padding: 60px 5%; /* Basic padding for all */
+    /* UPDATED: Restored text-align for horizontal centering of content */
+    text-align: center;
 }
 
 /* Sections with potentially long content are specifically aligned to the top */
@@ -100,7 +101,7 @@ body {
     width: auto;
 }
 
-/* NEW: Header Navigation Styles */
+/* Header Navigation Styles */
 .header-nav {
     display: flex;
     gap: 25px;
@@ -201,6 +202,7 @@ p {
 .timeline-icon { position: absolute; top: 25px; font-size: 1.8rem; color: var(--color-primary); z-index: 2; }
 .timeline-item:nth-child(odd) .timeline-icon { right: -60px; }
 .timeline-item:nth-child(even) .timeline-icon { left: -60px; }
+/* Explicitly set text-align for timeline content */
 .timeline-content { padding: 1rem; text-align: right; }
 .timeline-item:nth-child(even) .timeline-content { text-align: left; }
 .timeline-content h3 { color: var(--color-primary); }
